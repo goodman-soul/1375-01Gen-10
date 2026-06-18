@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: '"Source Serif Pro"', '"Noto Serif SC"', Georgia, serif;
+    background-color: #1a1a1a;
+    color: #f5f5dc;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #8b4513;
+    color: #f5f5dc;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-left: 1px solid #3d3d3d;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #8b4513;
+    border: 2px solid #1a1a1a;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a0522d;
+  }
+}
+
+@layer components {
+  .industrial-border {
+    border: 3px solid #3d3d3d;
+    position: relative;
+  }
+
+  .industrial-border::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 1px solid #5a5a5a;
+    pointer-events: none;
+  }
+
+  .stamp-label {
+    font-family: '"JetBrains Mono"', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 1px solid currentColor;
+    display: inline-block;
+    transform: rotate(-2deg);
+  }
+
+  .archive-punch {
+    position: relative;
+  }
+
+  .archive-punch::before,
+  .archive-punch::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 2px solid #3d3d3d;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .archive-punch::before {
+    left: 8px;
+  }
+
+  .archive-punch::after {
+    right: 8px;
+  }
+
+  .danger-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      #c9a227,
+      #c9a227 10px,
+      #1a1a1a 10px,
+      #1a1a1a 20px
+    );
+  }
+
+  .danger-stripes-red {
+    background-image: repeating-linear-gradient(
+      45deg,
+      #991b1b,
+      #991b1b 10px,
+      #c9a227 10px,
+      #c9a227 20px
+    );
+  }
+
+  .paper-grain {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .paper-grain::after {
+    content: "";
+    position: absolute;
+    inset: -200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    animation: grain 8s steps(10) infinite;
+    opacity: 0.5;
+  }
+
+  .scanlines {
+    position: relative;
+  }
+
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+  }
+
+  .typewriter-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #c9a227;
+    animation: typewriter 3s steps(40) 0.5s forwards, blink 1s step-end infinite;
+  }
+
+  .section-number {
+    font-family: '"Bebas Neue"', '"Oswald"', sans-serif;
+    font-size: 8rem;
+    line-height: 1;
+    color: rgba(61, 61, 61, 0.5);
+    position: absolute;
+    letter-spacing: -0.05em;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .tldr-badge {
+    font-family: '"JetBrains Mono"', monospace;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border: 1px solid #8b4513;
+    color: #a0522d;
+    background: rgba(139, 69, 19, 0.1);
+  }
+}
+
+@layer utilities {
+  .text-shadow-heavy {
+    text-shadow: 3px 3px 0 #0d0d0d, 6px 6px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(61, 61, 61, 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61, 61, 61, 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-blueprint {
+    background-color: #1e293b;
+    background-image:
+      linear-gradient(rgba(100, 150, 200, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 150, 200, 0.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .drop-cap::first-letter {
+    font-family: '"Bebas Neue"', sans-serif;
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    padding-top: 0.3rem;
+    padding-right: 0.5rem;
+    color: #8b4513;
+  }
+}
